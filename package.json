@@ -1,0 +1,28 @@
+{
+    "name": "forum-connector",
+    "version": "0.1.0",
+    "description": "TopCoder Forum NodeJS wrapper",
+    "main": "index.js",
+    "dependencies": {
+        "underscore": "~1.5.2",
+        "async": "~0.2.10",
+        "java": ">=0.2.2"
+    },
+    "devDependencies": {
+        "mocha": "~1.17.1"
+    },
+    "keywords" : [
+        "node",
+        "forums",
+        "wrapper"
+    ],
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "directories": {
+        "doc": ".",
+        "lib": "lib"
+    },
+    "author": "TCSASSEMBLER",
+    "license": "MIT"
+}
