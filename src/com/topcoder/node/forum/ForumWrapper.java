@@ -15,8 +15,15 @@ import java.util.Properties;
  * Wrapper class to communicate with ForumEJB.
  * </p>
  *
- * @author freegod
- * @version 1.0
+ * <p>
+ * Version 1.1 - Fix the issue that if jboss is restarted, the ForumWrapper is no longer usable, and the API call will be problem.
+ * <ul>
+ * <li>Updated {@link #getForumsInstance(String, Boolean)} method, add param forceInit to control whether force to init the forumService</li>
+ * </ul>
+ * </p>
+ *
+ * @author freegod, bugbuka
+ * @version 1.1
  * @since 1.0
  */
 public class ForumWrapper {
@@ -55,16 +62,21 @@ public class ForumWrapper {
      * <p>
      *     Return <code>Forums</code> instance.
      * </p>
+     *
+     * @param forumHost
+     *          stands for the forum host
+     * @param forceInit
+     *          if true, do init forumService.
      * @return
      *          <code>Forums</code> instance
      * @throws Exception
      *          if any error occurs
      */
-    public static Forums getForumsInstance(String forumHost) throws Exception {
+    public static Forums getForumsInstance(String forumHost, boolean forceInit) throws Exception {
         if (null == forumHost) {
             forumHost = DEFAULT_FORUM_HOST;
         }
-        if (null == forumService) {
+        if (null == forumService || forceInit) {
             init(forumHost);
         }
         return forumService;
